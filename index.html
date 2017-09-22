@@ -15,18 +15,42 @@
         <!--MAIN CONTAINER-->
         <div class="container">
             <div class = "row">
-                <div class="col text-center py-5">
+                <div class="col text-center py-2">
                     <p>Giphy API Project</p>
+                </div>
+            </div>
+
+            <!-- Search area -->
+            <div class = "row">
+                <div id= "SearchArea" class = "col text-center p-2">
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter a phrase">
+                            <span class="input-group-btn">
+                                <button id = "SearchButton" class="btn btn-success" type="button">Search</button>
+                            </span>
+                    </div>
                 </div>
 
             </div>
 
+            <!-- Gif Button area -->
             <div class = "row">
-                <div class = "col-2 py-5"> </div>
+                <div class = "col-2"></div>
+                <div id = "ButtonsGoHere" class = "col-9 text-center">
+                    <!--Gif buttons will go here.-->
 
-                <div id = "GifContainer" class = "col-8">
+                </div>
+                <div class = "col-2"></div>
 
-                    CONTAINTER HERE
+            </div>
+            <!-- Gif Display Area -->
+            <div class = "row">
+                <div class = "col-2 pt-2"> </div>
+
+                <div id = "GifContainer" class = "col-8 text-center">
+
+                    <!--Gifs will go here.-->
 
 
                 </div>
