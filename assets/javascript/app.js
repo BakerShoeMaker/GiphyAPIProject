@@ -34,21 +34,29 @@ $("#SearchButton").click( function(){
         method: 'GET'
    }).done(function(response) {
         var results = response.data;
+        //var imageURL = results[i].images.fixed_height.url
+        var imageURL = results[0].images.fixed_height.url
         //console.log(results);
        console.log(results[0].images.fixed_height.url);
-        for(var i = 0; i < results; i++){
-            //$("#GifContainer").text(JSON.stringify(response));
-            //$("#GifContainer").text((response[i].data.images.original_still.url));
-            var gifDiv = $("#GifContainer");
-            var imageURL = results[i].images.fixed_height.url
-            var gifImages = $("img");
-            gifImages.attr("src", imageURL);
-            gifDiv.append(gifImages);
-
-        }
+        // for(var i = 0; i < results; i++){
+        //     //$("#GifContainer").text(JSON.stringify(response));
+        //     //$("#GifContainer").text((response[i].data.images.original_still.url));
+        //     var gifDiv = $("#GifContainer");
+        //     var imageURL = results[i].images.fixed_height.url
+        //     var gifImages = $("img");
+        //     gifImages.attr("src", imageURL);
+        //     gifDiv.append(gifImages);
+        //
+        // }
+        $("#GifContainer").html("<img src=" +imageURL +">");
+        //$("#GifContainer").html("<img src=imageURL>");
 
     })
 });
+//1) Display videos from the loop and add the rating.
+//2) Click on the buttons to show hte videos
+//3) Click on video for pause/play functionality.
+
 
 showButtons();
 
