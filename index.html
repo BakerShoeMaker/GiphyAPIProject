@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/css/reset.css">
         <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <script src="https://use.fontawesome.com/0f97643179.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/styles.css">
@@ -17,16 +18,15 @@
         <div class="container">
             <div class = "row">
                 <div class="col text-center py-2">
-                    <p>Giphy API Project</p>
+                    <p><i class="fa fa-camera mr-3"></i>Giphy API Project</p>
                 </div>
             </div>
 
             <!-- Search area -->
             <div class = "row">
                 <div id= "SearchArea" class = "col text-center p-2">
-
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter a phrase">
+                        <input id= "SearchBox" type="text" class="form-control" placeholder="Enter a phrase">
                             <span class="input-group-btn">
                                 <button id = "SearchButton" class="btn btn-success" type="button">Search</button>
                             </span>
@@ -38,7 +38,7 @@
             <!-- Gif Button area -->
             <div class = "row">
                 <div class = "col-2"></div>
-                <div id = "ButtonsGoHere" class = "col-9 text-center">
+                <div id = "ButtonsGoHere" class = "col-9 text-left p-3 ">
                     <!--Gif buttons will go here.-->
 
                 </div>
@@ -48,8 +48,8 @@
             <!-- Gif Display Area -->
             <div class = "row">
                 <div class = "col-2 pt-2"> </div>
-
-                <div id = "GifContainer" class = "col-8 text-center">
+                <hr>
+                <div id = "GifContainer" class = "col-8 text-center gifText">
 
                     <!--Gifs will go here.-->
 
