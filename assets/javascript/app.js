@@ -6,7 +6,7 @@ function showButtons(){
     $("#ButtonsGoHere").empty();
     for(var i = 0; i < topics.length; i++)
     {
-        console.log("hello world");
+        //console.log("hello world");
         var dynamicButton = $("<button>");
         dynamicButton.text(topics[i]);
         dynamicButton.addClass("buttonProp");
@@ -34,27 +34,35 @@ $("#SearchButton").click( function(){
         method: 'GET'
    }).done(function(response) {
         var results = response.data;
-        //var imageURL = results[i].images.fixed_height.url
-        var imageURL = results[0].images.fixed_height.url
-        //console.log(results);
-       console.log(results[0].images.fixed_height.url);
-        // for(var i = 0; i < results; i++){
-        //     //$("#GifContainer").text(JSON.stringify(response));
-        //     //$("#GifContainer").text((response[i].data.images.original_still.url));
-        //     var gifDiv = $("#GifContainer");
-        //     var imageURL = results[i].images.fixed_height.url
-        //     var gifImages = $("img");
-        //     gifImages.attr("src", imageURL);
-        //     gifDiv.append(gifImages);
-        //
-        // }
-        $("#GifContainer").html("<img src=" +imageURL +">");
-        //$("#GifContainer").html("<img src=imageURL>");
+       console.log(results);
+
+        for(var i = 0; i < results.length; i++){
+            console.log(results[i].images.fixed_height.url);
+             //console.log(results[0].images.fixed_height.url);
+            var imageURL = results[i].images.fixed_height.url;
+            var gifRating = results[i].rating;
+
+            var p = $("<p>").text("Rating: " +gifRating);
+            p.attr("class", "gifRating");
+            //var gifHolder = $("<div>");
+            var gifContainer = $("<div class = 'gifText'>");
+            var imgTag = $("<img>");
+            imgTag.attr("src", imageURL);
+            //var imgHolder = gifHolder.attr("src", imageURL);
+            //var finalImage = $("#GifContainer").html("<img src =" +imageURL +">");
+            //gifHolder.append(imgHolder);
+            console.log(gifRating);
+
+            gifContainer.append(p);
+            gifContainer.append(imgTag);
+            $("#GifContainer").prepend(gifContainer);
+        }
+
 
     })
 });
-//1) Display videos from the loop and add the rating.
-//2) Click on the buttons to show hte videos
+//1) Display videos from the loop and add the rating. [FINISHED]
+//2) Click on the buttons to show the videos.
 //3) Click on video for pause/play functionality.
 
 

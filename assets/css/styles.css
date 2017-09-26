@@ -4,8 +4,8 @@ body{
 }
 
 p{
-    font-family: 'Rock Salt', cursive;
-    font-size: 40px;
+    font-family: Roboto', sans-serif;
+    font-size: 100px;
     color: white;
     text-align: center;
 }
@@ -24,7 +24,6 @@ p{
     margin-bottom:  10px ;
     padding-top: 5px;
     padding-bottom: 5px;
-
 }
 .buttonProp:hover{
     transform: scale(1.01);
@@ -32,10 +31,20 @@ p{
 
 }
 .gifText{
+    font-family: 'Rock Salt', cursive;
+    color: white;
+    padding: 2px;
+    font-size:40px;
+}
+
+.gifRating{
     font-family: 'Roboto', sans-serif;
     color: white;
-    padding: 10px;
+    padding: 2px;
+    font-size:15px;
 }
+
+
 
 
 
