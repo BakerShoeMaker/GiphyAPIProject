@@ -3,8 +3,11 @@ var topics = ["dogs","lions","wolves","tigers"];
 //var gifContainer = $("<div class = 'gifText'>");
 //var imgTag = $("<img class='playPause' >");
 var buttonClickedSearch ="";
+var imageURLstill;
+var imageURLanimate;
 
-function showButtons(){
+
+    function showButtons(){
     $("#ButtonsGoHere").empty();
     for(var i = 0; i < topics.length; i++)
     {
@@ -48,8 +51,8 @@ $("#SearchButton").click( function(){
             console.log(results[i].images.fixed_height.url);
              //console.log(results[0].images.fixed_height.url);
             //var imageURL = results[i].images.fixed_height.url;
-            var imageURLstill = results[i].images.original_still.url;
-            var imageURLanimate= results[i].images.fixed_height.url;
+            imageURLstill = results[i].images.original_still.url;
+            imageURLanimate= results[i].images.fixed_height.url;
             var gifRating = results[i].rating;
 
             var gifContainer = $("<div class = 'gifText'>");
@@ -78,22 +81,22 @@ $("#SearchButton").click( function(){
 
 //play/pause
 function playPause(event) {
-        //Set the state to the image 9:45 pm
+
         $(".playPause").on("click",function(){
             var state = $(this).attr("data-state");
-         console.log('playPause', state)
-            if (state === "pause") {
-                console.log(state);
-                console.log("The state is: " +$(".playPause").attr("data-state"));
-                // $(this).attr("src", $(this).attr("data-animate"));
-                // $(this).attr("data-state", "animate");
-            } else {
-                // $(this).attr("src", $(this).attr("data-pause"));
-                // $(this).attr("data-state", "pause");
+            console.log('playPause', state);
+            console.log($(".playPause").attr("data-state"));
+            console.log($(".playPause").attr("data-animate"));
+            console.log($(".playPause").attr("data-pause"));
+            if(state == "pause"){
+
+                console.log("The data state is PAUSE!!!!");
             }
 
         });
 }; //End playPause
+
+
 
 //Search with the Existing buttons
 function searchExistingButtonsClicked(){
@@ -129,11 +132,7 @@ function searchExistingButtonsClicked(){
             gifContainer.append(p);
             gifContainer.append(imgTag);
             $("#GifContainer").prepend(gifContainer);
-
-
-
-
-        }//end of for loop()
+         }//end of for loop()
 
 
     });//end done()
