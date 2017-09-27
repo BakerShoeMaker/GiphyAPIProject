@@ -1,19 +1,27 @@
 
 var topics = ["dogs","lions","wolves","tigers"];
-
+//var gifContainer = $("<div class = 'gifText'>");
+//var imgTag = $("<img class='playPause' >");
+var buttonClickedSearch ="";
 
 function showButtons(){
     $("#ButtonsGoHere").empty();
     for(var i = 0; i < topics.length; i++)
     {
         //console.log("hello world");
-        var dynamicButton = $("<button>");
+        var dynamicButton = $("<button id = 'buttonClicked" +i +"'>");
         dynamicButton.text(topics[i]);
         dynamicButton.addClass("buttonProp");
         $("#ButtonsGoHere").append(dynamicButton);
     }
 
 }
+//For the dynamic buttons. Takes the context of the button
+$('#ButtonsGoHere').on('click', 'button', function() {
+    buttonClickedSearch = "";
+    buttonClickedSearch = this.textContent;
+    searchExistingButtonsClicked();
+});
 
 
 //#SearchButton is the button ID.
@@ -39,15 +47,19 @@ $("#SearchButton").click( function(){
         for(var i = 0; i < results.length; i++){
             console.log(results[i].images.fixed_height.url);
              //console.log(results[0].images.fixed_height.url);
-            var imageURL = results[i].images.fixed_height.url;
+            //var imageURL = results[i].images.fixed_height.url;
+            var imageURLstill = results[i].images.original_still.url;
+            var imageURLanimate= results[i].images.fixed_height.url;
             var gifRating = results[i].rating;
 
+            var gifContainer = $("<div class = 'gifText'>");
             var p = $("<p>").text("Rating: " +gifRating);
             p.attr("class", "gifRating");
             //var gifHolder = $("<div>");
-            var gifContainer = $("<div class = 'gifText'>");
-            var imgTag = $("<img>");
-            imgTag.attr("src", imageURL);
+
+            var imgTag = $("<img class='playPause' data-pause = imageURLstill data-animate = imageURLanimate data-state =" +
+                " 'pause'>");
+            imgTag.attr("src", imageURLstill);
             //var imgHolder = gifHolder.attr("src", imageURL);
             //var finalImage = $("#GifContainer").html("<img src =" +imageURL +">");
             //gifHolder.append(imgHolder);
@@ -56,14 +68,56 @@ $("#SearchButton").click( function(){
             gifContainer.append(p);
             gifContainer.append(imgTag);
             $("#GifContainer").prepend(gifContainer);
+            //$("#GifContainer").append(gifContainer);
         }
-
+        //Add play/pause toggle ability
+        playPause();
 
     })
 });
+
+//play/pause
+function playPause(event) {
+        //Set the state to the image 9:45 pm
+        $(".playPause").on("click",function(){
+            var state = $(this).attr("data-state");
+         console.log('playPause', state)
+            if (state === "pause") {
+                console.log(state);
+                console.log("The state is: " +$(".playPause").attr("data-state"));
+                // $(this).attr("src", $(this).attr("data-animate"));
+                // $(this).attr("data-state", "animate");
+            } else {
+                // $(this).attr("src", $(this).attr("data-pause"));
+                // $(this).attr("data-state", "pause");
+            }
+
+        });
+}; //End playPause
+
+//Search with the Existing buttons
+function searchExistingButtonsClicked(){
+   console.log("Now searching ..........");
+    var valueOfSearch = buttonClickedSearch;
+    console.log(valueOfSearch);
+
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=eRJZpx34ZPkPAXT5rQS03wtOJmBQRlvv&rating=g&q=" +valueOfSearch
+        +"&limit=10";
+    $.ajax({
+        url: queryURL,
+        method: 'GET'
+    }).done(function(response){
+        var results = response.data;
+        console.log(results);
+        //add rest of code here.
+
+    });//end done()
+}//end searchExistingButtonsClicked
+
+
 //1) Display videos from the loop and add the rating. [FINISHED]
 //2) Click on the buttons to show the videos.
-//3) Click on video for pause/play functionality.
+//3) Click on video for pause/play functionality. [PROBLEM]
 
 
 showButtons();
