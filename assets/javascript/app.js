@@ -109,7 +109,32 @@ function searchExistingButtonsClicked(){
     }).done(function(response){
         var results = response.data;
         console.log(results);
-        //add rest of code here.
+
+        for(var i = 0; i < results.length; i++){
+
+            var imageURLstill = results[i].images.original_still.url;
+            var imageURLanimate= results[i].images.fixed_height.url;
+            var gifRating = results[i].rating;
+
+            var gifContainer = $("<div class = 'gifText'>");
+            var p = $("<p>").text("Rating: " +gifRating);
+            p.attr("class", "gifRating");
+
+            var imgTag = $("<img class='playPause' data-pause = imageURLstill data-animate = imageURLanimate data-state =" +
+                " 'pause'>");
+            imgTag.attr("src", imageURLstill);
+
+            console.log(gifRating);
+
+            gifContainer.append(p);
+            gifContainer.append(imgTag);
+            $("#GifContainer").prepend(gifContainer);
+
+
+
+
+        }//end of for loop()
+
 
     });//end done()
 }//end searchExistingButtonsClicked
