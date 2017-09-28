@@ -56,7 +56,7 @@ $("#SearchButton").click( function(){
             var gifRating = results[i].rating;
 
             var gifContainer = $("<div class = 'gifText'>");
-            var p = $("<p>").text("Rating: " +gifRating);
+            var p = $("<p>").text("Rated: " +gifRating);
             p.attr("class", "gifRating");
             //var gifHolder = $("<div>");
 
@@ -74,27 +74,52 @@ $("#SearchButton").click( function(){
             //$("#GifContainer").append(gifContainer);
         }
         //Add play/pause toggle ability
-        playPause();
+        //playPause();
 
     })
 });
 
 //play/pause
-function playPause(event) {
 
-        $(".playPause").on("click",function(){
+
+ $("#GifContainer").on("click", 'img' ,function(){
             var state = $(this).attr("data-state");
             console.log('playPause', state);
-            console.log($(".playPause").attr("data-state"));
-            console.log($(".playPause").attr("data-animate"));
-            console.log($(".playPause").attr("data-pause"));
-            if(state == "pause"){
-
-                console.log("The data state is PAUSE!!!!");
+            console.log(imageURLanimate);
+         if (state === "pause") {
+             $(this).attr("src", $(this).attr("data-animate"));
+             $(this).attr("data-state", "animate");
+             $(this).attr("src",imageURLanimate);
+             console.log(state);
+         }
+         else {
+             $(this).attr("src", $(this).attr("data-pause"));
+             $(this).attr("data-state", "pause");
+             $(this).attr("src",imageURLstill);
             }
 
         });
-}; //End playPause
+
+
+//TRY THIS -----------------------------------------------------
+// $(".playPause").on("click", "img",function(){
+//     var state = $(this).attr("data-state");
+//     console.log('playPause', state);
+//     console.log(imageURLanimate);
+//     if(state === "pause") {
+//         $(this).attr("src", $(this).attr("data-animate"));
+//         $(this).attr("data-state", "animate");
+//         $(this).attr("src",imageURLanimate);
+//         console.log(state);
+//     }
+//     else {
+//         $(this).attr("src", $(this).attr("data-pause"));
+//         $(this).attr("data-state", "pause");
+//         $(this).attr("src",imageURLstill);
+//     }
+//
+// });
+//-------------------------------------- END ----------------------
 
 
 
