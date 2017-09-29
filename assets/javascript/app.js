@@ -7,7 +7,7 @@ var imageURLstill;
 var imageURLanimate;
 
 
-    function showButtons(){
+function showButtons(){
     $("#ButtonsGoHere").empty();
     for(var i = 0; i < topics.length; i++)
     {
@@ -48,11 +48,18 @@ $("#SearchButton").click( function(){
        console.log(results);
 
         for(var i = 0; i < results.length; i++){
+            var gifDumpAnimate= [];
+            var gifDumpStill= [];
             console.log(results[i].images.fixed_height.url);
              //console.log(results[0].images.fixed_height.url);
             //var imageURL = results[i].images.fixed_height.url;
+
             imageURLstill = results[i].images.original_still.url;
+            //gifDumpAnimate.push(results[i].images.original_still.url);
+
             imageURLanimate= results[i].images.fixed_height.url;
+            //gifDumpStill.push(imageURLanimate= results[i].images.fixed_height.url);
+
             var gifRating = results[i].rating;
 
             var gifContainer = $("<div class = 'gifText'>");
@@ -60,7 +67,8 @@ $("#SearchButton").click( function(){
             p.attr("class", "gifRating");
             //var gifHolder = $("<div>");
 
-            var imgTag = $("<img class='playPause' data-pause = imageURLstill data-animate = imageURLanimate data-state =" +
+            var imgTag = $("<img class='playPause' data-pause = imageURLstill data-animate = imageURLanimate" +
+                "    data-state =" +
                 " 'pause'>");
             imgTag.attr("src", imageURLstill);
             //var imgHolder = gifHolder.attr("src", imageURL);
@@ -74,27 +82,47 @@ $("#SearchButton").click( function(){
             //$("#GifContainer").append(gifContainer);
         }
         //Add play/pause toggle ability
-        playPause();
+        //playPause();
 
     })
 });
 
+$("#GifContainer").on("click", 'img' ,function(){
+    var state = $(this).attr("data-state");
+    console.log('playPause', state);
+    console.log(imageURLanimate);
+    if (state === "pause") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+        $(this).attr("src",imageURLanimate);
+         console.log(state);
+    }
+    else {
+
+        $(this).attr("src", $(this).attr("data-pause"));
+        $(this).attr("data-state", "pause");
+        $(this).attr("src", imageURLstill);
+    }
+
+});
+
 //play/pause
-function playPause(event) {
+// function playPause() {
+//     $(".playPause").on("click",function(){
+//         var state = $(this).attr("data-state");
+//         if (state === "pause") {
+//             console.log("The state is: " +$(".playPause").attr("data-state"));
+//             //$(this).attr("src", $(this).attr("data-animate"));
+//              //$(this).attr("data-state", "animate");
+//
+//         } else {
+//
+//      $(this).attr("src", $(this).attr("data-pause"));
+//             $(this).attr("data-state", "pause");
+//         }
+//     });
+// }; //End playPause
 
-        $(".playPause").on("click",function(){
-            var state = $(this).attr("data-state");
-            console.log('playPause', state);
-            console.log($(".playPause").attr("data-state"));
-            console.log($(".playPause").attr("data-animate"));
-            console.log($(".playPause").attr("data-pause"));
-            if(state == "pause"){
-
-                console.log("The data state is PAUSE!!!!");
-            }
-
-        });
-}; //End playPause
 
 
 
