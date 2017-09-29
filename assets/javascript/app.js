@@ -63,7 +63,7 @@ $("#SearchButton").click( function(){
             var gifRating = results[i].rating;
 
             var gifContainer = $("<div class = 'gifText'>");
-            var p = $("<p>").text("Rating: " +gifRating);
+            var p = $("<p>").text("Rated: " +gifRating);
             p.attr("class", "gifRating");
             //var gifHolder = $("<div>");
 
@@ -87,6 +87,7 @@ $("#SearchButton").click( function(){
     })
 });
 
+<<<<<<< HEAD
 $("#GifContainer").on("click", 'img' ,function(){
     var state = $(this).attr("data-state");
     console.log('playPause', state);
@@ -123,6 +124,49 @@ $("#GifContainer").on("click", 'img' ,function(){
 //     });
 // }; //End playPause
 
+=======
+//play/pause
+
+
+ $("#GifContainer").on("click", 'img' ,function(){
+            var state = $(this).attr("data-state");
+            console.log('playPause', state);
+            console.log(imageURLanimate);
+         if (state === "pause") {
+             $(this).attr("src", $(this).attr("data-animate"));
+             $(this).attr("data-state", "animate");
+             $(this).attr("src",imageURLanimate);
+             console.log(state);
+         }
+         else {
+             $(this).attr("src", $(this).attr("data-pause"));
+             $(this).attr("data-state", "pause");
+             $(this).attr("src",imageURLstill);
+            }
+
+        });
+
+
+//TRY THIS -----------------------------------------------------
+// $(".playPause").on("click", "img",function(){
+//     var state = $(this).attr("data-state");
+//     console.log('playPause', state);
+//     console.log(imageURLanimate);
+//     if(state === "pause") {
+//         $(this).attr("src", $(this).attr("data-animate"));
+//         $(this).attr("data-state", "animate");
+//         $(this).attr("src",imageURLanimate);
+//         console.log(state);
+//     }
+//     else {
+//         $(this).attr("src", $(this).attr("data-pause"));
+//         $(this).attr("data-state", "pause");
+//         $(this).attr("src",imageURLstill);
+//     }
+//
+// });
+//-------------------------------------- END ----------------------
+>>>>>>> fb8e4894ac41d7328307dfe0996baaf2582a8193
 
 
 
